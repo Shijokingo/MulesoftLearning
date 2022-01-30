@@ -1,0 +1,89 @@
+DataWeave Playground Tutorial
+
+Challenge 4.3 (Not Completed)
+
+Solution
+%dw 2.0
+output json
+
+var data = {
+  "name": "Max the Mule",
+  "locations": [
+    {
+      "name": "Max’s house",
+      "address": "1234 Mule Street",
+      "state": "CA"
+    }
+  ]
+}
+---
+[data..name, data..address, data..state]
+
+
+
+
+
+
+
+
+Logical Operators
+
+%dw 2.0
+output json
+---
+payload.name == "Max"
+
+
+
+Challenge 3. 6  
+  https://developer.mulesoft.com/learn/dataweave/tutorial/3.6-Challenge
+
+Solution to the Challenge 3.6
+
+%dw 2.0
+output json
+---
+{
+    "descendant": payload..id,
+    "multivalue": payload..*id[0 to 1],
+    "multivalueSecondLevel": payload..*id[2 to 3],
+    "multivalueThirdLevel": payload..*id[4 to 5],
+    "allTheIds" : payload..*id
+}
+
+
+
+***Multivalue Selector***
+
+%dw 2.0
+output json
+---
+payload.movies.*title
+
+
+Range Selector
+
+%dw 2.0
+output json
+---
+payload[2 to 0]
+
+Single Value Selector
+%dw 2.0
+output json
+---
+payload.environment.stage
+
+Booleans
+
+%dw 2.0
+output json
+---
+{
+  "string": typeOf("hello"),
+  "number": typeOf(1),
+  "boolean": typeOf(true)
+}
+
+
+
