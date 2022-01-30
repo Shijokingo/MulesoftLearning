@@ -1,5 +1,36 @@
 DataWeave Playground Tutorial
 
+Flow Control
+
+5.1 If elese
+
+%dw 2.0
+output json
+var action = if (payload.price > 140) "sell" else if (payload.price < 100) "buy" else "hold"
+---
+{
+  price  : payload.price,
+  action : action
+}
+
+5.2 Litteral Pattern Matching
+
+%dw 2.0
+output json
+---
+payload.status  match {
+        case "0" ->  "Light off"
+        case "1" -> "Ligt on"
+        else -> "Invalid input"
+}
+
+
+
+
+
+
+
+
 Challenge 4.3 (Not Completed)
 
 Solution
